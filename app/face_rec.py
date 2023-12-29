@@ -49,8 +49,9 @@ def face_prediction(test_img, data_frame,
                     feature_column, 
                     thresh = 0.5, 
                     name_role=["name", "role"]):
-    results = face_app.get(test_img)
+    
     test_copy = test_img.copy()
+    results = face_app.get(test_img)
     
     for res in results:
         x1, y1, x2, y2 = res["bbox"].astype(int)
