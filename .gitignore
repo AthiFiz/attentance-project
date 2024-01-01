@@ -1,2 +1,4 @@
 venv/
 resources/
+app/images/
+app/test_images
