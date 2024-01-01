@@ -2,3 +2,4 @@ venv/
 resources/
 app/images/
 app/test_images
+app/face_embedding.txt

@@ -124,4 +124,31 @@ class RealTimePred:
             self.logs["current_time"].append(current_time)
 
         return test_copy
+    
+
+
+class RegistrationForm:
+    def __init__(self):
+        self.sample = 0
+    
+    def reset(self):
+        self.sample = 0
+
+    def get_embeddings(self, frame):
+
+        results = face_app.get(frame, max_num=1)
+        embeddings = None
+
+        for res in results:
+            self.sample += 1
+            x1, y1, x2, y2 = res["bbox"].astype(int)
+            cv2.rectangle(frame, (x1,y1), (x2,y2), (0,255,0), 1)
+            text = f"samples: {self.sample}"
+            cv2.putText(frame, text, (x1,y1), cv2.FONT_HERSHEY_DUPLEX, 0.4, (255,255,0), 1)
+
+
+            embeddings = res["embedding"]
+
+        return frame, embeddings
+
                 
